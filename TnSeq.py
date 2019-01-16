@@ -50,7 +50,9 @@ def find_features(chromosome, hit_position, feature_list):
     result = []
     
     for feature in feature_list:
-        if feature.chromosome == chromosome and feature.start <= hit_position <= feature.stop:
+        if feature.chromosome == chromosome and \
+            (feature.start <= hit_position <= feature.stop or
+             feature.stop <= hit_position <= feature.start):
             result.append(feature)
             
 #         assert feature.start < feature.stop
